@@ -13,8 +13,12 @@ Feature:  Citizenship with scenario Outline
       When User a Citizenship name as "<CitizenShipName>" short name as "<shortName>"
       Then Already exist message should be displayed
       And Click on close button
+
+      When User delete the "<CitizenShipName>"
+      Then Success message should be displayed
+
       Examples:
-        |CitizenShipName  | shortName |
-        |country364      | nameless1  |
-        |country36      | nameless2 |
-        |country39      | nameless3  |
+        |CitizenShipName | shortName |
+        |Nairobi999       | nameless979  |
+        |Nairobi988       | nameless967 |
+        |Nairobi991       | nameless954  |

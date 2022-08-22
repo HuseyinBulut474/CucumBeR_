@@ -11,5 +11,5 @@ Feature: Country Multi Scenario
     Then Success message should be displayed
 
   Scenario: Create a counrty parameter data
-    When Create a country name as "Nameless" code as "code56"
+    When Create a country name as "Nameless41" code as "code56"
     Then Success message should be displayed

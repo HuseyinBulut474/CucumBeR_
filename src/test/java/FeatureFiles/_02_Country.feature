@@ -1,5 +1,6 @@
 Feature:  Country Functionality
 
+  @SmokeTest
   Scenario: Create Country
     Given Navigate to basqar
     When Enter username and password and click login button

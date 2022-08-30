@@ -2,12 +2,9 @@ package Pages;
 
 import Utilities.GWD;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class DialogContent extends Parent {
     public DialogContent() {
@@ -53,7 +50,7 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//button[@aria-label='Close dialog']")
     private WebElement closeDialog;
 
-    @FindBy(xpath = "//ms-text-field[contains(@placeholder,'FIELD.NAME')]//input")
+    @FindBy(xpath = "(//div[contains(@class,'mat-form-field-infix ng-tns-c74')]//input)[1]")
     private WebElement searchInput;
 
     @FindBy(xpath = "//ms-search-button//button")
@@ -64,10 +61,37 @@ public class DialogContent extends Parent {
 
     @FindBy(xpath = "//span[contains(text(),'Delete')]")
     private WebElement deleteDialogBtn;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='budgetAccountIntegrationCode']//input")
+    private WebElement integrationCode;
+
+    @FindBy(xpath = "//ms-integer-field[@formcontrolname='priority']//input")
+    private WebElement priorityCode;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='firstName']//input")
+    private WebElement firstName;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='lastName']//input")
+    private WebElement lastName;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='middleName']//input")
+    private WebElement middleName;
+
+    @FindBy(xpath = "//input[@formcontrolname='employeeId']")
+    private WebElement employeeID;
+
+    @FindBy(xpath = "//*[@data-placeholder='Document Number']")
+    private WebElement documentNumber;
+
+    @FindBy(xpath = "//*[@data-placeholder='Country']")
+    private WebElement country;
+
+    @FindBy(xpath = "//span[text()=' Delete ']")
+    private WebElement deleteOption;
+
     WebElement myElement;
 
-    public void findAndSend(String strElement, String value) {  // 2.aşama
-        // burda string isimden weblemente ulaşıcam
+    public void findAndSend(String strElement, String value) {
         switch (strElement) {
             case "username" : myElement =username; break;
             case "password" : myElement =password; break;
@@ -75,6 +99,14 @@ public class DialogContent extends Parent {
             case "codeInput" : myElement =codeInput; break;
             case "shortName" : myElement =shortName; break;
             case "searchInput" : myElement =searchInput; break;
+            case "integrationCode" : myElement =integrationCode; break;
+            case "priorityCode" : myElement =priorityCode; break;
+            case "firstName" : myElement =firstName; break;
+            case "lastName" : myElement =lastName; break;
+            case "middleName" : myElement =middleName; break;
+            case "employeeID" : myElement =employeeID; break;
+            case "documentNumber" : myElement =documentNumber; break;
+            case "country" : myElement =country; break;
         }
         sendKeysFunction(myElement, value);
     }
@@ -90,12 +122,12 @@ public class DialogContent extends Parent {
             case "searchButton" : myElement =searchButton; break;
             case "deleteButton" : myElement =deleteButton; break;
             case "deleteDialogBtn" : myElement =deleteDialogBtn; break;
+            case "deleteOption" : myElement =deleteOption; break;
         }
         clickFunction(myElement);
     }
 
-    public void findAndContainsText(String strElement, String text) {  // 2.aşama
-        // burda string isimden weblemente ulaşıcam
+    public void findAndContainsText(String strElement, String text) {
         switch (strElement) {
             case "dashboard" : myElement =dashboard; break;
             case "successMessage" : myElement =successMessage; break;
@@ -104,15 +136,13 @@ public class DialogContent extends Parent {
         verifyContainsText(myElement, text);
     }
     public void searchAndDelete(String searchText) {
-        findAndSend("searchInput", searchText); // aranacak kelimeyi kutucuğa gönder
-        findAndClick("searchButton"); // arama butonuna bas
+        findAndSend("searchInput", searchText);
+        findAndClick("searchButton");
 
-//        WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.stalenessOf(deleteButton));
-
-        GWD.Bekle(2); // TODO: incelenecek
-        findAndClick("deleteButton");// silme butonua bas
-        findAndClick("deleteDialogBtn");// dilogdaki silme butonuna bas
+        waitUntilLoading(); //sayfa reload olana kadar bekle...
+        findAndClick("deleteButton");
+        findAndClick("deleteDialogBtn");
     }
+
 }
 

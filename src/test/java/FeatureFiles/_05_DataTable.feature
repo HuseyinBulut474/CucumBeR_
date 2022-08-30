@@ -15,7 +15,7 @@ Feature: Datatable Functionality
         | addButton |
 
       And User sending the keys in Dialog content
-        | nameInput | Nairobi474 |
+        | nameInput | Nairobi47498 |
         | codeInput | nairobi987 |
 
       And Click on the element in the Dialog
@@ -33,7 +33,7 @@ Feature: Datatable Functionality
       | addButton |
 
     And User sending the keys in Dialog content
-      | nameInput | cloud747362 |
+      | nameInput | cloud791 |
 
     And Click on the element in the Dialog
       | saveButton |
@@ -41,6 +41,31 @@ Feature: Datatable Functionality
     And Success message should be displayed
 
     And User delete item from Dialog
-      | cloud74736 |
+      | cloud791 |
+
+    And Success message should be displayed
+
+  Scenario: Create a Fee, delete Fee
+    And Click on the element in the fees
+      | setupOne      |
+      | parameters    |
+      | fees          |
+
+    And Click on the element in the Dialog
+      | addButton |
+
+    And User sending the keys in Dialog content
+      | nameInput | Nairobi74509|
+      | codeInput | 698747809   |
+      |integrationCode |37009   |
+      |priorityCode |    19709  |
+
+    And Click on the element in the Dialog
+      | saveButton |
+
+    And Success message should be displayed
+
+    And User delete item from Dialog
+      | Nairobi7456 |
 
     And Success message should be displayed

@@ -2,7 +2,7 @@
 
 Feature: Login Functionality
 
-  @SmokeTest  @Regression
+  @SmokeTest
   Scenario: Login with valid username and password
 
     Given Navigate to basqar

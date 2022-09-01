@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>CucumBeR_</artifactId>
+    <artifactId>Cucumber_Kursu3</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -14,7 +14,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <dependencies>
+    <dependencies>  <!--  Bağımlılıklar    -->
+
+        <!--  Selenium için eklendi -->
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -22,6 +24,7 @@
             <version>4.3.0</version>
         </dependency>
 
+        <!-- Cucumber için yüklendi. -->
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -30,6 +33,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!--TestNG için eklendi -->
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -38,6 +42,7 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Cucumber ile test ng nin bağlantısı cucumber ile aynı versiyon olmalı -->
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -46,12 +51,15 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- WebDriver  -->
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.2.3</version>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -59,6 +67,9 @@
             <scope>test</scope>
         </dependency>
 
+
+        <!-- Excel işlemleri için aşağıdaki 2 depency ye kullanılıyor-->
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -84,6 +95,13 @@
             <version>5.7.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <optional>true</optional>
+        </dependency>
+
 
     </dependencies>
 
@@ -95,12 +113,16 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M1</version>
                 <configuration>
+                    <!--                   XML paralel çalışmada master report için kondu-->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/java/XMLFiles/ParallelTesting_MasterReport.xml</suiteXmlFile>
+                    </suiteXmlFiles>
 
-                    <includes>
-                        <!-- for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   -->
-                        <include>**/_04_TestRunnerSmoke.java</include>
-                        <!--                        <include>**/runners/*TestRunner*.java</include>-->
-                    </includes>
+                    <!--                    <includes>-->
+                    <!--                        &lt;!&ndash; for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   &ndash;&gt;-->
+                    <!--                        <include>**/_04_TestRunnerSmoke.java</include>-->
+                    <!--                        &lt;!&ndash;                        <include>**/runners/*TestRunner*.java</include>&ndash;&gt;-->
+                    <!--                    </includes>-->
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
@@ -129,5 +151,8 @@
         </plugins>
 
     </build>
+
+
+
 
 </project>

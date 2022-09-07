@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" verbose="0" name="Failed suite [Suit 1]" parallel="tests">
+  <parameter name="browser" value="chrome"/>
+  <test name="Test 2(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="Runners._08_TestRunnerParallel_MasterReport">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="beforeClass"/>
+          <include name="runScenario" invocation-numbers="0 1"/>
+          <include name="tearDownClass"/>
+          <include name="tearDownClass"/>
+          <include name="setUpClass"/>
+          <include name="setUpClass"/>
+        </methods>
+      </class> <!-- Runners._08_TestRunnerParallel_MasterReport -->
+    </classes>
+  </test> <!-- Test 2(failed) -->
+  <test name="Test 1(failed)" parallel="tests">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="Runners._08_TestRunnerParallel_MasterReport">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="beforeClass"/>
+          <include name="runScenario" invocation-numbers="1"/>
+          <include name="tearDownClass"/>
+          <include name="tearDownClass"/>
+          <include name="setUpClass"/>
+          <include name="setUpClass"/>
+        </methods>
+      </class> <!-- Runners._08_TestRunnerParallel_MasterReport -->
+    </classes>
+  </test> <!-- Test 1(failed) -->
+</suite> <!-- Failed suite [Suit 1] -->

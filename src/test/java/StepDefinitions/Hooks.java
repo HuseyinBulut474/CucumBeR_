@@ -1,7 +1,7 @@
 package StepDefinitions;
 
+import Utilities.ExcelUtility;
 import Utilities.GWD;
-import com.aventstack.extentreports.service.ExtentTestManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -29,6 +29,9 @@ public class Hooks {
         LocalDateTime date = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy");
 
+        ExcelUtility.writeExcel("src/test/java/ApachePOI/resource/ScenarioStatus.xlsx",
+                scenario, GWD.threadBrowserName.get(), date.format(formatter));
+
         if (scenario.isFailed()){
             // klasöre
             TakesScreenshot screenshot = (TakesScreenshot) GWD.getDriver();
@@ -44,11 +47,9 @@ public class Hooks {
             }
 
         }
-
         // ekran görüntüsü al senaryo hatalı ise
         GWD.quitDriver();
     }
-
     public String getBase64Screenshot()
     {
         return ((TakesScreenshot) GWD.getDriver()).getScreenshotAs(OutputType.BASE64);

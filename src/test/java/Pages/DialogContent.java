@@ -94,6 +94,13 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//span[text()=' Delete ']")
     private WebElement deleteOption;
 
+    @FindBy(xpath = "//td[text()=' Cloudy ']/../td[7]/div/ms-edit-button/button")
+    private WebElement editButtonOption;
+
+    @FindBy(xpath = "//td[text()=' Cloudy ']/../td[7]/div//ms-delete-button//button")
+    private WebElement deleteButtonOption;
+
+
     WebElement myElement;
 
     public void findAndSend(String strElement, String value) {
@@ -128,6 +135,8 @@ public class DialogContent extends Parent {
             case "deleteButton" : myElement =deleteButton; break;
             case "deleteDialogBtn" : myElement =deleteDialogBtn; break;
             case "deleteOption" : myElement =deleteOption; break;
+            case "editButtonOption" : myElement =editButtonOption; break;
+            case "deleteButtonOption" : myElement =deleteButtonOption; break;
         }
         clickFunction(myElement);
     }

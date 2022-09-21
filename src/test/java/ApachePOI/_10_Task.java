@@ -17,31 +17,20 @@ import java.io.IOException;
 public class _10_Task {
     public static void main(String[] args) throws IOException {
         XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet sheet = workbook.createSheet("Sayfa1");
-        Row row = sheet.createRow(0);
-        Cell cell = row.createCell(0);
-        cell.setCellValue("ÇARPIM TABLOSU");
+        XSSFSheet sheet = workbook.createSheet("Standard");
 
-        int k = 1;
-        for (int i = 1; i <= 10; i++) {
-            for (int j = 1; j <= 11; j++) {
-                row = sheet.createRow((k));
-                cell = row.createCell(0);
-                cell.setCellValue(i + "x" + j + " = " + (i * j));
-                k++;
+        for (int i = 0; i < 10; i++) {
+            Row newRow = sheet.createRow(i);
+            for (int j = 0; j < 10; j++) {
+                Cell newCell = newRow.createCell(j);
+                newCell.setCellValue((i + 1) + " x " + (j + 1) + " = " + (i + 1) * (j + 1));
             }
-            sheet.createRow((k));
-            row.createCell(0);
-            cell.setCellValue(" ");
         }
-        String newExcelPath = "src/test/java/ApachePOI/resource/YeniExcel.xlsx";
-        try {
-            FileOutputStream outputStream = new FileOutputStream(newExcelPath);
-            workbook.write(outputStream);
-            workbook.close();
-            outputStream.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        String yeniExcelPath = "src/test/java/ApachePOI/resource/CarpimTablosu1.xlsx";
+        FileOutputStream outputStream = new FileOutputStream(yeniExcelPath);
+        workbook.write(outputStream);
+        workbook.close();
+        outputStream.close();
+        System.out.println("İşlem tamamlandı");
     }
 }

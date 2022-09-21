@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class DialogContent extends Parent {
     public DialogContent() {
@@ -100,6 +101,8 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//td[text()=' Cloudy ']/../td[7]/div//ms-delete-button//button")
     private WebElement deleteButtonOption;
 
+    @FindBy(xpath = "//tbody/tr/td[2]")
+    public List<WebElement> nameList;
 
     WebElement myElement;
 

@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suit 1"  parallel="tests" thread-count="1">
+
+    <test name="Test 1">
+        <parameter name="select" value="select * from actor"></parameter>
+        <classes>
+            <class name="_JDBC.Tessing_2._03_Question"></class>
+        </classes>
+    </test>
+</suite>

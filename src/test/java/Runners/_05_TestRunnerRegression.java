@@ -7,7 +7,8 @@ import io.cucumber.testng.CucumberOptions;
         // and olduğunda her ikisininde senaryoda tag olarak olan senaryoları çalıştırır
         tags = "@Regression or @SmokeTest",
         features = {"src/test/java/FeatureFiles/"},
-        glue = {"StepDefinitions"}
+        glue = {"StepDefinitions"},
+        plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json"}
 )
 public class _05_TestRunnerRegression extends AbstractTestNGCucumberTests {
     // browser tipi vermek için, rapora ek parametre eklemek için sonra kulanacağız
